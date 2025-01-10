@@ -1,0 +1,89 @@
+/* Reset styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* To hide scrolling for the mouse effect */
+}
+
+body, html {
+    height: 100%;
+}
+
+/* Gradient background */
+body {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Maintenance container */
+.maintenance-container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    z-index: 10;
+    position: relative;
+}
+
+/* Logo styles */
+.logo {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #666;
+    line-height: 1.6;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Mouse effect styles */
+.mouse-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.mouse-effect span {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    animation: fade 1s ease-out infinite;
+}
+
+/* Animation for the mouse effect */
+@keyframes fade {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(5);
+        opacity: 0;
+    }
+}
