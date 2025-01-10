@@ -1,83 +1,156 @@
-/* Reset styles */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    overflow: hidden; /* To hide scrolling for the mouse effect */
-}
-
+/* General Reset */
 body, html {
-    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%; /* Ensures body and html span the full height */
 }
 
-/* Gradient background */
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Body Styling */
 body {
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes footer to the bottom */
+    height: 100%; /* Allows the flexbox layout to work */
+    background: linear-gradient(45deg, #4facfe, #00f2fe); /* Background gradient */
 }
 
-/* Maintenance container */
+/* Main Content Section */
 .maintenance-container {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.9);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    z-index: 10;
-    position: relative;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    margin: auto; /* Centers the content */
+    z-index: 2; /* Keeps it above the mouse effect */
 }
 
-/* Logo styles */
 .logo {
-    max-width: 150px;
+    max-width: 150px; /* Logo responsiveness */
+    height: auto;
     margin-bottom: 20px;
 }
 
 h1 {
+    font-size: 24px;
     color: #333;
     margin-bottom: 10px;
 }
 
 p {
+    font-family: 'Sour Gummy', cursive; /* Apply Sour Gummy font to paragraphs */
+    font-size: 16px;
     color: #666;
-    line-height: 1.6;
+    margin-bottom: 30px;
 }
 
-a {
-    color: #007bff;
+/* Footer Section */
+.social-footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto 10px;
+    width: 100%;
+    max-width: 500px; /* Keeps footer from stretching too wide */
+    box-sizing: border-box;
+    z-index: 2; /* Keeps it above the mouse effect */
+}
+
+.social-footer h2 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    display: inline-block;
+    font-size: 24px;
+    color: #333; /* Default color */
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-a:hover {
-    text-decoration: underline;
+/* Default hover for all icons */
+.social-icons a:hover {
+    color: #007bff; /* Default hover color (blue) */
 }
 
-/* Mouse effect styles */
+/* Specific hover colors for Instagram and WhatsApp */
+.social-icons a[href*="instagram.com"]:hover {
+    color: #e1306c; /* Instagram pink */
+}
+
+.social-icons a[href*="whatsapp.com"]:hover {
+    color: #25D366; /* WhatsApp green */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .maintenance-container, .social-footer {
+        width: 90%; /* Shrinks width for smaller screens */
+    }
+
+    h1 {
+        font-size: 20px; /* Adjust text size for mobile */
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .social-icons a {
+        font-size: 20px; /* Shrink icons slightly on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 18px; /* Further reduce size on very small screens */
+    }
+
+    .social-icons a {
+        font-size: 18px;
+    }
+}
+
+/* Mouse Effect */
 .mouse-effect {
-    position: absolute;
+    position: fixed; /* Ensures the mouse effect is fixed to the viewport */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 1;
+    pointer-events: none; /* Allows interactions with underlying elements */
+    z-index: 1; /* Keeps it behind the content but above the background */
 }
 
-.mouse-effect span {
+.circle {
     position: absolute;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
+    width: 10px;
+    height: 10px;
     background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
     pointer-events: none;
-    animation: fade 1s ease-out infinite;
+    animation: fadeOut 1s forwards;
 }
 
-/* Animation for the mouse effect */
-@keyframes fade {
+/* Circle Animation */
+@keyframes fadeOut {
     0% {
         transform: scale(1);
         opacity: 1;
